@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | LIHIM</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .checkout-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+        }
+
+        .checkout-section {
+            background: #fff;
+            padding: 2.5rem;
+            border: 1px solid #eee;
+            margin-bottom: 2rem;
+        }
+
+        .checkout-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .payment-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .payment-option {
+            border: 1px solid #ccc;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .payment-option:hover {
+            border-color: #1a1a1a;
+        }
+
+        .payment-option input {
+            cursor: pointer;
+        }
+
+        .order-summary {
+            background: #f9f9f9;
+            padding: 2rem;
+            border-top: 2px solid #1a1a1a;
+            position: sticky;
+            top: 120px;
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .order-total {
+            border-top: 1px solid #ddd;
+            padding-top: 1rem;
+            margin-top: 1rem;
+            font-weight: 600;
+            font-size: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        @media (max-width: 768px) {
+            .checkout-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body style="background-color: #fafafa;">
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo-arriba-pzquierda.png" alt="LIHIM" class="logo-img"
+                    style="height: 80px; width: 80px; object-fit: contain;">
+            </a>
+            <div class="hamburger"><span>&#9776;</span></div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Tienda</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div style="padding-top: 120px; padding-bottom: 4rem;">
+        <div class="container">
+            <h1 class="section-title text-center" style="margin-bottom: 3rem;">Finalizar Compra</h1>
+
+            <form id="checkout-form" class="checkout-grid">
+
+                <div class="checkout-forms">
+                    <!-- Shipping Info -->
+                    <div class="checkout-section">
+                        <h3>1. Información de Envío</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="first-name">Nombre</label>
+                                <input type="text" id="first-name" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="last-name">Apellidos</label>
+                                <input type="text" id="last-name" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Dirección</label>
+                            <input type="text" id="address" class="form-control" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">Ciudad</label>
+                                <input type="text" id="city" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="zip">Código Postal</label>
+                                <input type="text" id="zip" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="country">País</label>
+                            <select id="country" class="form-control" required>
+                                <option value="">Selecciona un país...</option>
+                                <option value="ES">España</option>
+                                <option value="MX">México</option>
+                                <option value="US">Estados Unidos</option>
+                                <option value="AR">Argentina</option>
+                                <option value="CO">Colombia</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Payment Info -->
+                    <div class="checkout-section">
+                        <h3>2. Método de Pago</h3>
+                        <div class="payment-methods">
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="stripe" checked>
+                                <span>Tarjeta de Crédito / Débito (Stripe)</span>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="paypal">
+                                <span>PayPal</span>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="mercadopago">
+                                <span>MercadoPago</span>
+                            </label>
+                        </div>
+
+                        <!-- Extra simulated card fields for Stripe -->
+                        <div id="card-fields"
+                            style="margin-top: 1.5rem; background: #fafafa; padding: 1.5rem; border: 1px dashed #ccc;">
+                            <div class="form-group">
+                                <label>Número de Tarjeta (Simulación)</label>
+                                <input type="text" class="form-control" placeholder="0000 0000 0000 0000">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>MM/AA</label>
+                                    <input type="text" class="form-control" placeholder="MM/YY">
+                                </div>
+                                <div class="form-group">
+                                    <label>CVC</label>
+                                    <input type="text" class="form-control" placeholder="123">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Summary Sidebar -->
+                <div class="checkout-sidebar">
+                    <div class="order-summary" id="order-summary-content">
+                        <h3 style="margin-bottom: 1.5rem; border-bottom: 1px solid #ccc; padding-bottom: 0.5rem;">
+                            Resumen del Pedido</h3>
+                        <div id="order-items-list"
+                            style="margin-bottom: 1.5rem; border-bottom: 1px solid #ccc; padding-bottom: 1rem;">
+                            <!-- Injected by JS -->
+                        </div>
+                        <div class="order-item" style="color: #666;">
+                            <span>Subtotal</span>
+                            <span id="checkout-subtotal">$0.00</span>
+                        </div>
+                        <div class="order-item" style="color: #666;">
+                            <span>Envío Estándar</span>
+                            <span>$10.00</span>
+                        </div>
+                        <div class="order-total">
+                            <span>Total</span>
+                            <span id="checkout-total">$0.00</span>
+                        </div>
+
+                        <button type="submit" class="btn btn-full" style="margin-top: 2rem;">Confirmar Pedido</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modals (Success Simulation) -->
+    <div id="success-modal"
+        style="display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.8); z-index: 2000; align-items: center; justify-content: center;">
+        <div style="background: #fff; padding: 4rem; max-width: 500px; text-align: center;">
+            <h2 class="section-title" style="margin-bottom: 1rem;">¡Pedido Confirmado!</h2>
+            <p style="color: #555; margin-bottom: 2rem;">Gracias por confiar en LIHIM. Hemos recibido tu orden y
+                simulado el pago exitosamente a través de <strong id="success-provider"></strong>.</p>
+            <a href="index.html" class="btn">Volver al Inicio</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>Explorar</h4>
+                    <ul>
+                        <li><a href="brand.html">Nuestra historia</a></li>
+                        <li><a href="product.html">Productos</a></li>
+                        <li><a href="ingredients.html">Ingredientes</a></li>
+                        <li><a href="technology.html">Tecnologia</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Soporte</h4>
+                    <ul>
+                        <li><a href="contact.html">Contacto</a></li>
+                        <li><a href="contact.html#faq">Preguntas</a></li>
+                        <li><a href="shipping-returns.html">Envio y devoluciones</a></li>
+                        <li><a href="terms-conditions.html">Terminos legales</a></li>
+                        <li><a href="privacy-policy.html">Politicas de privacidad</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>sistema creado por loly cabrera marín para lihim cosmética – ia aplicada al marketing digital</p>
+                <p><a href="https://lolycabreramarin.com.ar" target="_blank"
+                        style="color: #ffffff; text-decoration: underline;">lolycabreramarin.com.ar</a></p>
+                <p style="margin-top: 1rem; opacity: 0.7;">&copy; 2026 lihim cosmetics. todos los derechos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const orderList = document.getElementById('order-items-list');
+            const subtotalEl = document.getElementById('checkout-subtotal');
+            const totalEl = document.getElementById('checkout-total');
+            const form = document.getElementById('checkout-form');
+            const cardFields = document.getElementById('card-fields');
+            const paymentRadios = document.querySelectorAll('input[name="payment"]');
+
+            // Payment method toggle logic
+            paymentRadios.forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    if (e.target.value === 'stripe') {
+                        cardFields.style.display = 'block';
+                    } else {
+                        cardFields.style.display = 'none';
+                    }
+                });
+            });
+
+            function loadOrderSummary() {
+                const cart = JSON.parse(localStorage.getItem('lihimCart')) || [];
+                let subtotal = 0;
+
+                if (cart.length === 0) {
+                    window.location.href = 'cart.html';
+                    return;
+                }
+
+                orderList.innerHTML = '';
+                cart.forEach(item => {
+                    subtotal += item.price * item.quantity;
+                    const div = document.createElement('div');
+                    div.className = 'order-item';
+                    div.innerHTML = `
+                        <span>${item.name} (x${item.quantity})</span>
+                        <span>$${(item.price * item.quantity).toFixed(2)}</span>
+                    `;
+                    orderList.appendChild(div);
+                });
+
+                const total = subtotal + 10; // $10 shipping
+                subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+                totalEl.textContent = `$${total.toFixed(2)}`;
+            }
+
+            loadOrderSummary();
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                // Simulate processing
+                const provider = document.querySelector('input[name="payment"]:checked').value;
+                document.getElementById('success-provider').textContent = provider.charAt(0).toUpperCase() + provider.slice(1);
+
+                // Clear cart
+                localStorage.removeItem('lihimCart');
+
+                // Show success modal
+                const modal = document.getElementById('success-modal');
+                modal.style.display = 'flex';
+            });
+        });
+    </script>
+</body>
+
+</html>

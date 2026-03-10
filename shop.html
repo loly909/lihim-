@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda | LIHIM</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body style="background-color: #fafafa;">
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo-arriba-pzquierda.png" alt="LIHIM" class="logo-img"
+                    style="height: 80px; width: 80px; object-fit: contain;">
+            </a>
+            <div class="hamburger"><span>&#9776;</span></div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="brand.html">Brand</a></li>
+                    <li><a href="product.html">Producto</a></li>
+                    <li><a href="ingredients.html">Ingredientes</a></li>
+                    <li><a href="technology.html">Tecnología</a></li>
+                    <li><a href="gallery.html">Galería</a></li>
+                    <li><a href="shop.html">Tienda</a></li>
+                    <li><a href="contact.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="nav-icons">
+                <a href="cart.html" class="cart-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span class="cart-count" style="display: none;">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div style="padding-top: 120px;">
+        <section class="container reveal">
+            <h1 class="section-title text-center"
+                style="margin-bottom: 3rem; font-family: 'Inter', sans-serif; color: #699f8c; text-transform: uppercase;">
+                Peeling Enzimático en
+                discos</h1>
+
+            <div class="grid" style="row-gap: 3rem;">
+                <!-- Product 1 -->
+                <div class="col-4" style="grid-column: 5 / span 4;"> <!-- Centered in 12-col grid -->
+                    <a href="product.html" style="display: block;">
+                        <div
+                            style="background-color: #ebebeb; height: 350px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                            <img src="assets/images/tienda..jpg" style="width:100%; height:100%; object-fit:cover;">
+                        </div>
+                        <h3
+                            style="font-size: 1.2rem; margin-bottom: 0.5rem; text-align: center; font-family: 'Inter', sans-serif; color: #699f8c; text-transform: lowercase;">
+                            Peeling Enzimático
+                            Iluminador</h3>
+                        <p class="product-body" style="text-align: center; font-size: 1.1rem; margin-bottom: 1.5rem;">
+                            $65.00</p>
+                    </a>
+                    <button class="btn btn-full add-to-cart"
+                        style="background-color: #699f8c; color: #fff; font-family: 'Inter', sans-serif; border: none;"
+                        data-id="peeling-01" data-name="Peeling Enzimático Iluminador" data-price="65.00"
+                        data-image="peeling">Añadir al
+                        Carrito</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>Explorar</h4>
+                    <ul>
+                        <li><a href="brand.html">Nuestra historia</a></li>
+                        <li><a href="product.html">Productos</a></li>
+                        <li><a href="ingredients.html">Ingredientes</a></li>
+                        <li><a href="technology.html">Tecnologia</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Soporte</h4>
+                    <ul>
+                        <li><a href="contact.html">Contacto</a></li>
+                        <li><a href="contact.html#faq">Preguntas</a></li>
+                        <li><a href="shipping-returns.html">Envio y devoluciones</a></li>
+                        <li><a href="terms-conditions.html">Terminos legales</a></li>
+                        <li><a href="privacy-policy.html">Politicas de privacidad</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>sistema creado por loly cabrera marín para lihim cosmética – ia aplicada al marketing digital</p>
+                <p><a href="https://lolycabreramarin.com.ar" target="_blank"
+                        style="color: #ffffff; text-decoration: underline;">lolycabreramarin.com.ar</a></p>
+                <p style="margin-top: 1rem; opacity: 0.7;">&copy; 2026 lihim cosmetics. todos los derechos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito | LIHIM</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .cart-item {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            padding: 1.5rem 0;
+        }
+
+        .cart-img {
+            width: 80px;
+            height: 80px;
+            background-color: #eee;
+            margin-right: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            color: #999;
+        }
+
+        .cart-details {
+            flex-grow: 1;
+        }
+
+        .cart-qty {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .qty-btn {
+            background: none;
+            border: 1px solid #ccc;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+
+        .remove-btn {
+            color: #f44336;
+            cursor: pointer;
+            font-size: 0.9rem;
+            text-decoration: underline;
+            background: none;
+            border: none;
+        }
+
+        .cart-summary {
+            background-color: #f9f9f9;
+            padding: 2rem;
+            border-top: 2px solid #1a1a1a;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .summary-total {
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-top: 1px solid #e0e0e0;
+            padding-top: 1rem;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo-arriba-pzquierda.png" alt="LIHIM" class="logo-img"
+                    style="height: 80px; width: 80px; object-fit: contain;">
+            </a>
+            <div class="hamburger"><span>&#9776;</span></div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Tienda</a></li>
+                </ul>
+            </nav>
+            <div class="nav-icons">
+                <a href="cart.html" class="cart-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span class="cart-count" style="display: none;">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div style="padding-top: 120px; min-height: calc(100vh - 200px);">
+        <section class="container reveal">
+            <h1 class="section-title">Tu Carrito</h1>
+
+            <div class="grid" style="margin-top: 3rem;">
+                <div class="col-8" id="cart-items-container">
+                    <!-- Cart items will be injected here via JS -->
+                    <p id="empty-cart-msg"
+                        style="display: none; padding: 2rem; background: #f9f9f9; text-align: center;">Tu carrito está
+                        vacío. <br><br> <a href="shop.html" class="btn btn-outline">Ir a la tienda</a></p>
+                </div>
+
+                <div class="col-4">
+                    <div class="cart-summary" id="cart-summary-block">
+                        <h3 style="margin-bottom: 1.5rem;">Resumen de Compra</h3>
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <span id="cart-subtotal">$0.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Envío</span>
+                            <span>Calculado en Checkout</span>
+                        </div>
+                        <div class="summary-row summary-total">
+                            <span>Total Estimado</span>
+                            <span id="cart-total">$0.00</span>
+                        </div>
+                        <a href="checkout.html" class="btn btn-full" style="margin-top: 2rem;">Proceder al Pago</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>Explorar</h4>
+                    <ul>
+                        <li><a href="brand.html">Nuestra historia</a></li>
+                        <li><a href="product.html">Productos</a></li>
+                        <li><a href="ingredients.html">Ingredientes</a></li>
+                        <li><a href="technology.html">Tecnologia</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Soporte</h4>
+                    <ul>
+                        <li><a href="contact.html">Contacto</a></li>
+                        <li><a href="contact.html#faq">Preguntas</a></li>
+                        <li><a href="shipping-returns.html">Envio y devoluciones</a></li>
+                        <li><a href="terms-conditions.html">Terminos legales</a></li>
+                        <li><a href="privacy-policy.html">Politicas de privacidad</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>sistema creado por loly cabrera marín para lihim cosmética – ia aplicada al marketing digital</p>
+                <p><a href="https://lolycabreramarin.com.ar" target="_blank"
+                        style="color: #ffffff; text-decoration: underline;">lolycabreramarin.com.ar</a></p>
+                <p style="margin-top: 1rem; opacity: 0.7;">&copy; 2026 lihim cosmetics. todos los derechos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cartContainer = document.getElementById('cart-items-container');
+            const emptyMsg = document.getElementById('empty-cart-msg');
+            const summaryBlock = document.getElementById('cart-summary-block');
+            const subtotalEl = document.getElementById('cart-subtotal');
+            const totalEl = document.getElementById('cart-total');
+
+            function renderCartPage() {
+                let cart = JSON.parse(localStorage.getItem('lihimCart')) || [];
+                cartContainer.innerHTML = '';
+
+                if (cart.length === 0) {
+                    emptyMsg.style.display = 'block';
+                    cartContainer.appendChild(emptyMsg);
+                    summaryBlock.style.opacity = '0.5';
+                    summaryBlock.style.pointerEvents = 'none';
+                    subtotalEl.textContent = '$0.00';
+                    totalEl.textContent = '$0.00';
+                    return;
+                }
+
+                emptyMsg.style.display = 'none';
+                summaryBlock.style.opacity = '1';
+                summaryBlock.style.pointerEvents = 'auto';
+
+                let subtotal = 0;
+
+                cart.forEach((item, index) => {
+                    const itemTotal = item.price * item.quantity;
+                    subtotal += itemTotal;
+
+                    const div = document.createElement('div');
+                    div.className = 'cart-item';
+                    div.innerHTML = `
+                        <div class="cart-img">[Img: ${item.image}]</div>
+                        <div class="cart-details">
+                            <h4 style="margin-bottom: 0.5rem; font-family: var(--font-body);">${item.name}</h4>
+                            <p style="color: #666; font-size: 0.9rem;">$${item.price.toFixed(2)}</p>
+                        </div>
+                        <div class="cart-qty">
+                            <button class="qty-btn" onclick="updateQty('${item.id}', -1)">-</button>
+                            <span style="font-size: 0.9rem;">${item.quantity}</span>
+                            <button class="qty-btn" onclick="updateQty('${item.id}', 1)">+</button>
+                            <span style="font-weight: 600; width: 70px; text-align: right;">$${itemTotal.toFixed(2)}</span>
+                        </div>
+                        <button class="remove-btn" onclick="removeItem('${item.id}')" style="margin-left: 2rem;">Quitar</button>
+                    `;
+                    cartContainer.appendChild(div);
+                });
+
+                subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+                totalEl.textContent = `$${subtotal.toFixed(2)}`; // No taxes/shipping in basic demo
+            }
+
+            window.updateQty = function (id, change) {
+                let cart = JSON.parse(localStorage.getItem('lihimCart')) || [];
+                const item = cart.find(i => i.id === id);
+                if (item) {
+                    item.quantity += change;
+                    if (item.quantity <= 0) {
+                        cart = cart.filter(i => i.id !== id);
+                    }
+                    localStorage.setItem('lihimCart', JSON.stringify(cart));
+                    renderCartPage();
+                    updateGlobalCartCountNav(); // from script.js logic duplicated here
+                }
+            };
+
+            window.removeItem = function (id) {
+                let cart = JSON.parse(localStorage.getItem('lihimCart')) || [];
+                cart = cart.filter(i => i.id !== id);
+                localStorage.setItem('lihimCart', JSON.stringify(cart));
+                renderCartPage();
+                updateGlobalCartCountNav();
+            };
+
+            function updateGlobalCartCountNav() {
+                const cart = JSON.parse(localStorage.getItem('lihimCart')) || [];
+                const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+                const cartCounts = document.querySelectorAll('.cart-count');
+                cartCounts.forEach(counter => {
+                    counter.textContent = totalItems;
+                    counter.style.display = totalItems > 0 ? 'inline-block' : 'none';
+                });
+            }
+
+            // Initial render
+            renderCartPage();
+        });
+    </script>
+</body>
+
+</html>
